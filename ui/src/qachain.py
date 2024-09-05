@@ -6,7 +6,7 @@ import streamlit as st
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.llms.gemini import Gemini
 from llama_index.core import Settings
-from llama_index.core import PromptTemplate
+from llama_index.core import PromptTemplate, StorageContext, load_index_from_storage
 from llama_index.embeddings.gemini import GeminiEmbedding
 # from langchain.vectorstores.deeplake import DeepLake
 # from langchain_google_genai import (
@@ -76,10 +76,18 @@ class QAChain:
         response = query_engine.query(query)
 
         answer = response.response
+
+        # Retrieve relevant docs to answer
+        storage_context = StorageContext.from_defaults(
+            vector_store=f_store, persist_dir="./storage"
+        )
+        index = load_index_from_storage(storage_context=storage_context)
+
+        searchDocs = index.as_retriever(similarity_top_k=5, retriever_mode="rake")
         # searchDocs = f_store.search(answer)
-        answer_embedding = text_embedding_model.get_text_embedding(answer)
-        searchDocs = f_store.query(query_embedding=answer_embedding, similarity_top_k=5)
-        st.write(searchDocs)
+        # answer_embedding = text_embedding_model.get_text_embedding(answer)
+        # searchDocs = f_store.query(query_embedding=answer_embedding, similarity_top_k=5)
+        # st.write(searchDocs)
         metadata = [j.metadata for j in searchDocs][:3]    
         page_no = ",".join(set([i['page_no']for i in metadata]))
         answer_with_source =  f"""{answer}\n\n
