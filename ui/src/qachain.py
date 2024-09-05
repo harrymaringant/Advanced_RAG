@@ -18,7 +18,8 @@ llm_temperature = st.secrets["LLM_TEMPERATURE"]
 top_p = st.secrets['TOP_P']
 top_k = st.secrets['TOP_K']
 
-Settings.embed_model = GeminiEmbedding(api_key=gemini_api_key,model_name="models/text-embedding-004")
+text_embedding_model = GeminiEmbedding(api_key=gemini_api_key,model_name="models/text-embedding-004")
+Settings.embed_model = text_embedding_model
 
 # load_dotenv()
 class QAChain:
@@ -75,9 +76,10 @@ class QAChain:
         response = query_engine.query(query)
 
         answer = response.response
-        # searchDocs = f_store.similarity_search(answer)
-        # metadata = [j.metadata for j in searchDocs][:3]    
-        metadata = [j.metadata for j in response.metadata][:3]
+        # searchDocs = f_store.search(answer)
+        answer_embedding = text_embedding_model.get_text_embedding(answer)
+        searchDocs = f_store.query(answer_embedding)
+        metadata = [j.metadata for j in searchDocs][:3]    
         page_no = ",".join(set([i['page_no']for i in metadata]))
         answer_with_source =  f"""{answer}\n\n
 Sumber File : {metadata[0]['file_name']} \n\nHalaman : {page_no}"""
