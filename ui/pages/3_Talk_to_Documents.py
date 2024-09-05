@@ -130,7 +130,7 @@ def main():
         st.chat_message("user").markdown(user_question)
         st.session_state.messages.append({"role": "user", "content": user_question})
 
-        response = get_conversationchain(user_question,selected_option,st.session_state["vector_store"])
+        response = get_conversationchain(user_question,selected_option,st.session_state["vector_store"], st.session_state["f_store"])
 
         st.chat_message("assistant").markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
