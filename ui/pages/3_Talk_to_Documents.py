@@ -117,7 +117,7 @@ def main():
                         vec,fais= get_document_text(path)
                         st.session_state.vector_store = vec
                         st.session_state.f_store = fais
-                        st.session_state.messages.append({"role": "assistant", "content": "Your Documents have been processed. Ask your questions now!"})
+                    st.session_state.messages.append({"role": "assistant", "content": "Your Documents have been processed. Ask your questions now!"})
                     st.success("Done")
                 else:
                     st.warning("Please upload Documents first.")
