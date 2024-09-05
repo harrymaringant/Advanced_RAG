@@ -111,7 +111,7 @@ class RAGStringQueryEngine(CustomQueryEngine):
     def custom_query(self, query_str: str):
         nodes = self.retriever.retrieve(query_str)
         
-        context_str = "\n\n".join([n.node.get_content() for n in nodes])
+        context_str = "\n\n".join([n.node.get_content() + "  \nUrl: " + n.node.metadata['url'] for n in nodes if len(n.node.get_content()) > 5])
         data = [x.metadata for x in nodes if len(x.get_content()) > 5]
         
         # Extracting the pairs
