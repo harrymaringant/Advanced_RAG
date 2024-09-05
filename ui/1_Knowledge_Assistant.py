@@ -13,6 +13,7 @@ nltk.data.path.clear()
 nltk.data.path.append(nltk_data_dir)
 nltk.download("stopwords", download_dir=nltk_data_dir)
 nltk.download('punkt', download_dir=nltk_data_dir)
+nltk.download('wordnet')
 
 import chromadb
 import streamlit as st
