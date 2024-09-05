@@ -110,21 +110,24 @@ def main():
                     for doc in docs:
                         temp_dir = tempfile.mkdtemp()
                         path = os.path.join(temp_dir, doc.name)
-                        print(path)
+                        
                         with open(path, "wb") as f:
                             f.write(doc.getvalue())
                         #extract from document -> get the text chunk -> create vectore store
-                        st.session_state.vector_store = get_document_text(path)
-                        st.session_state.messages.append({"role": "assistant", "content": "Your PDFs have been processed. Ask your questions now!"})
+                        vec,fais= get_document_text(path)
+                        st.session_state.vector_store = vec
+                        st.session_state.f_store = fais
+                        st.session_state.messages.append({"role": "assistant", "content": "Your Documents have been processed. Ask your questions now!"})
                     st.success("Done")
                 else:
-                    st.warning("Please upload PDF files first.")
+                    st.warning("Please upload Documents first.")
+        st.button('Clear Chat History', on_click=clear_chat_history)
         
     # Main content area for displaying chat messages
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
     # st.sidebar.button('Clear VectorDB', on_click=clear_vector_db)
     
-    user_question = st.chat_input("Ask a question about the PDF...")
+    user_question = st.chat_input("Ask a question about the Documents...")
 
     if user_question and st.session_state.vector_store:
         st.chat_message("user").markdown(user_question)
