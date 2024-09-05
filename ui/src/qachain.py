@@ -18,7 +18,7 @@ llm_temperature = st.secrets["LLM_TEMPERATURE"]
 top_p = st.secrets['TOP_P']
 top_k = st.secrets['TOP_K']
 
-Settings.embed_model = GeminiEmbedding(api_key=gemini_api_key,model_name="models/embedding-001")
+Settings.embed_model = GeminiEmbedding(api_key=gemini_api_key,model_name="models/text-embedding-004")
 
 # load_dotenv()
 class QAChain:

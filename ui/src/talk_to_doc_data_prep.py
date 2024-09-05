@@ -35,9 +35,9 @@ class Prep:
         # Initialize the vector store
         # faiss_vector_store = FaissVectorStore.from_documents(chunks_faiss, emb="models/text-embedding-004",google_api_key=gemini_api_key)
 
-        vector_store = FaissVectorStore(faiss_index=faiss_index)
-        storage_context = StorageContext.from_defaults(vector_store=vector_store)
-        faiss_vector_store = VectorStoreIndex.from_documents(chunks_faiss, storage_context=storage_context, embed_model = text_embedding_model)
+        faiss_vector_store = FaissVectorStore(faiss_index=faiss_index)
+        storage_context = StorageContext.from_defaults(vector_store=faiss_vector_store)
+        index = VectorStoreIndex.from_documents(chunks_faiss, storage_context=storage_context, embed_model = text_embedding_model)
         
         vector_store = VectorStoreIndex.from_documents(chunks)
         return vector_store, faiss_vector_store
