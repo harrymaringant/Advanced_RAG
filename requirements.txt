@@ -13,7 +13,6 @@ pysqlite3-binary
 lxml==4.9.4
 nltk
 numpy==1.26.2
-pydantic==2.5.3
 pydantic_core==2.14.6
 PyMuPDF==1.23.21
 pypdf==3.17.4
