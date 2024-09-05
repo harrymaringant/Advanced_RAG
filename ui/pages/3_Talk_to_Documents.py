@@ -80,12 +80,18 @@ def main():
     # Clear chat everytime pages move
     # clear_chat_history()
 
+    if "session_id" not in st.session_state:
+        st.session_state["session_id"] = str(uuid.uuid4())
+
     if "vector_store" not in st.session_state:
         st.session_state.vector_store = None
+    
+    if "f_store" not in st.session_state:
+        st.session_state.f_store = None
 
     if "messages" not in st.session_state:
         st.session_state.messages = [
-            {"role": "assistant", "content": "Hello! Upload your PDF files to start."}
+            {"role": "assistant", "content": "Hello! Upload your Documents files to start."}
         ]
 
     for message in st.session_state.messages:
