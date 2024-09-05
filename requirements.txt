@@ -1,6 +1,7 @@
 # talk to web
 llama-index-vector-stores-chroma
-llama_index
+llama-index==0.11.4
+llama-index-core==0.11.4
 llama-index-llms-gemini
 llama-index-embeddings-gemini
 chromadb
