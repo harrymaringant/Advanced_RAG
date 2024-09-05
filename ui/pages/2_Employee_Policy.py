@@ -47,9 +47,6 @@ import yaml
 from datetime import datetime
 from src.utils import preprocess_input
 
-if "session_id" not in st.session_state:
-    st.session_state["session_id"] = str(uuid.uuid4())
-
 temperature = st.secrets['knowledge_assistant_tmp']
 generation_config = {"temperature": temperature}
 # safety_settings = 
@@ -235,6 +232,8 @@ def main():
     # App title
     st.set_page_config(layout="wide", page_title="Xaira Chatbot RAG🧕💬")
     st.title("Employee Policy Assistant Bank XYZ")
+
+    st.session_state["session_id"] = str(uuid.uuid4())
 
     # Clear chat everytime pages move
     # clear_chat_history()

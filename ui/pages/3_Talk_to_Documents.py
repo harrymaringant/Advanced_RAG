@@ -77,6 +77,8 @@ def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
     st.title("AIDSU - Chat With Documents")
 
+    st.session_state["session_id"] = str(uuid.uuid4())
+
     # Clear chat everytime pages move
     # clear_chat_history()
 
