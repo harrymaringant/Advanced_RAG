@@ -78,12 +78,7 @@ class QAChain:
         answer = response.response
 
         # Retrieve relevant docs to answer
-        storage_context = StorageContext.from_defaults(
-            vector_store=f_store
-        )
-        index = load_indices_from_storage(storage_context=storage_context)
-
-        retriever = index.as_retriever(similarity_top_k=5, retriever_mode="rake")
+        retriever = vstore.as_retriever(similarity_top_k=5, retriever_mode="rake")
         searchDocs = retriever.retrieve(answer)
         # searchDocs = f_store.search(answer)
         # answer_embedding = text_embedding_model.get_text_embedding(answer)
