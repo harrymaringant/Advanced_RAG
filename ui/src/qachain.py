@@ -60,7 +60,7 @@ class QAChain:
         f_store = self.faiss_vector
 
         # Write prompt to guide the LLM to generate response
-        prompt_template = """You are helpful assistant of Bank Sinarmas, answer in 'Bahasa indonesia',
+        prompt_template = """You are helpful assistant of Bank XYZ, answer in 'Bahasa indonesia',
                              Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
                              provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
                              Context:\n {context_str}\n

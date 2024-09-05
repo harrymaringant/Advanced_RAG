@@ -21,7 +21,7 @@ def get_document_text(doc):
     vector_store,f_store = ingestion.ingest_documents(doc)
     return vector_store,f_store
 
-def get_conversationchain(query,selected_option,vector, faiss_vector):
+def get_conversationchain(query, selected_option, vector, faiss_vector):
     if selected_option == "gemini-1.5-pro":
         model = "models/gemini-1.5-pro"
     else:
@@ -100,8 +100,8 @@ def main():
 
     with st.sidebar:
 
-        options = ["gemini-1.5-flash", "gemini-1.5-pro-latest"]
-        selected_option = st.selectbox("Select Gemini Model:", options, index= 1)
+        options = ["gemini-1.5-flash", "gemini-1.5-pro"]
+        selected_option = st.selectbox("Select Gemini Model:", options, index= 0)
 
         docs = st.file_uploader("File upload", type= ['pdf', 'docx'] ,accept_multiple_files=True)
         # print(selected_option)
