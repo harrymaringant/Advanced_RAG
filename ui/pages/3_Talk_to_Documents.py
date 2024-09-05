@@ -121,7 +121,6 @@ def main():
                     st.success("Done")
                 else:
                     st.warning("Please upload Documents first.")
-        st.button('Clear Chat History', on_click=clear_chat_history)
         
     # Main content area for displaying chat messages
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
