@@ -75,7 +75,8 @@ class QAChain:
         response = query_engine.query(query)
 
         answer = response.response
-        searchDocs = f_store.similarity_search(answer)
+        # searchDocs = f_store.similarity_search(answer)
+        searchDocs = response.metadata
         metadata = [j.metadata for j in searchDocs][:3]    
         page_no = ",".join(set([i['page_no']for i in metadata]))
         answer_with_source =  f"""{answer}\n\n
