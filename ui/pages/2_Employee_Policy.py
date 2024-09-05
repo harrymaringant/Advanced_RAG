@@ -116,8 +116,8 @@ class RAGStringQueryEngine(CustomQueryEngine):
         title_url_pairs = set((item['file_name'], item['page_label']) for item in metadata)
 
         reference_str = "\n\nReference Documents:\n"
-        for i, (title, url) in enumerate(title_url_pairs, 1):
-            reference_str += f"{i}. Title: {title}\n   URL: {url}\n"
+        for i, (title, page_label) in enumerate(title_url_pairs, 1):
+            reference_str += f"{i}. Filename: {title}\n   Halaman: {page_label}\n"
 
         context_str = context_str + reference_str
         response = self.llm.complete(
