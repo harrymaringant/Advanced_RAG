@@ -71,7 +71,7 @@ class QAChain:
         
 
         llm_prompt = PromptTemplate(prompt_template)
-        query_engine = vstore.as_query_engine(text_qa_template=llm_prompt, llm=self.model, response_mode="simple_summarize",similarity_top_k=10)
+        query_engine = vstore.as_query_engine(text_qa_template=llm_prompt, llm=self.model, response_mode="simple_summarize",similarity_top_k=5)
         response = query_engine.query(query)
 
         answer = response.response

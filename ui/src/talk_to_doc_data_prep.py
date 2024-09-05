@@ -39,5 +39,5 @@ class Prep:
         storage_context = StorageContext.from_defaults(vector_store=faiss_vector_store)
         index = VectorStoreIndex.from_documents(chunks_faiss, storage_context=storage_context, embed_model = text_embedding_model)
         
-        vector_store = VectorStoreIndex.from_documents(chunks)
+        vector_store = VectorStoreIndex.from_documents(chunks, embed_model = text_embedding_model)
         return vector_store, faiss_vector_store
