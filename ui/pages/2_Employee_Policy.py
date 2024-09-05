@@ -64,7 +64,7 @@ Settings.embed_model = text_embedding_model
 Settings.context_window = st.secrets['knowledge_assistant_cw']
 
 # Load YAML data
-config = yaml.safe_load(open('config/config.yaml', 'r'))
+# config = yaml.safe_load(open('config/config.yaml', 'r'))
 
 ### Load Chroma
 collection_name = "emp-policy-20240905"
