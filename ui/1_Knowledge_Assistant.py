@@ -92,7 +92,7 @@ llm_prompt = PromptTemplate(
     "---------------------\n"
     "Given the context information and not prior knowledge"
     "You are Virtual Assitant of Bank XYZ. Answer in Indonesian Language"
-    "Give the reference based on page label in format Answer first then Sumber: \n<list of relevant url in bullets format> below the answer"
+    "Give the reference based on page label in format Answer first then Sumber: \n<list of relevant url from metadata: 'url' in bullets format> below the answer"
     "answer the query.\n"
     "Query: {query_str}\n"
     "Answer: "
