@@ -83,7 +83,8 @@ class QAChain:
         )
         index = load_index_from_storage(storage_context=storage_context)
 
-        searchDocs = index.as_retriever(similarity_top_k=5, retriever_mode="rake")
+        retriever = index.as_retriever(similarity_top_k=5, retriever_mode="rake")
+        searchDocs = retriever.retrieve(answer)
         # searchDocs = f_store.search(answer)
         # answer_embedding = text_embedding_model.get_text_embedding(answer)
         # searchDocs = f_store.query(query_embedding=answer_embedding, similarity_top_k=5)
