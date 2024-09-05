@@ -90,7 +90,7 @@ llm_prompt = PromptTemplate(
     "---------------------\n"
     "Given the context information and not prior knowledge"
     "You are Virtual Assitant of Bank XYZ. Answer in Indonesian Language"
-    "Give the reference based on page label in format Answer first then Sumber: \n<list of relevant page label from metadata: 'page label'  in bullets format> below the answer"
+    "Give the reference based on page label in format Answer first then Sumber: \n<list of unique and relevant 'page_label' from Reference Documents in bullets format, like Halaman + pagel_label> below the answer"
     "answer the query.\n"
     "Query: {query_str}\n"
     "Answer: "
@@ -104,12 +104,22 @@ class RAGStringQueryEngine(CustomQueryEngine):
     retriever: BaseRetriever
     response_synthesizer: BaseSynthesizer
     llm: llm
-    llm_prompt: PromptTemplate
+    qa_prompt: PromptTemplate
 
     def custom_query(self, query_str: str):
         nodes = self.retriever.retrieve(query_str)
         
         context_str = "\n\n".join([n.node.get_content() for n in nodes])
+        metadata = [x.metadata for x in nodes]
+        
+        # Extracting the pairs
+        title_url_pairs = set((item['file_name'], item['page_label']) for item in metadata)
+
+        reference_str = "\n\nReference Documents:\n"
+        for i, (title, url) in enumerate(title_url_pairs, 1):
+            reference_str += f"{i}. Title: {title}\n   URL: {url}\n"
+
+        context_str = context_str + reference_str
         response = self.llm.complete(
             llm_prompt.format(context_str=context_str, query_str=query_str)
         )
