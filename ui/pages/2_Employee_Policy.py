@@ -104,7 +104,7 @@ class RAGStringQueryEngine(CustomQueryEngine):
     retriever: BaseRetriever
     response_synthesizer: BaseSynthesizer
     llm: llm
-    qa_prompt: PromptTemplate
+    llm_prompt: PromptTemplate
 
     def custom_query(self, query_str: str):
         nodes = self.retriever.retrieve(query_str)
