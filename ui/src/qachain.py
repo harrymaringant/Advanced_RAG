@@ -6,7 +6,7 @@ import streamlit as st
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.llms.gemini import Gemini
 from llama_index.core import Settings
-from llama_index.core import PromptTemplate, StorageContext, load_index_from_storage
+from llama_index.core import PromptTemplate, StorageContext, load_index_from_storage,  load_indices_from_storage
 from llama_index.embeddings.gemini import GeminiEmbedding
 # from langchain.vectorstores.deeplake import DeepLake
 # from langchain_google_genai import (
@@ -81,7 +81,7 @@ class QAChain:
         storage_context = StorageContext.from_defaults(
             vector_store=f_store
         )
-        index = load_index_from_storage(storage_context=storage_context)
+        index = load_indices_from_storage(storage_context=storage_context)
 
         retriever = index.as_retriever(similarity_top_k=5, retriever_mode="rake")
         searchDocs = retriever.retrieve(answer)
