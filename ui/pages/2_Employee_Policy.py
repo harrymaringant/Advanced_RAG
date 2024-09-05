@@ -110,10 +110,10 @@ class RAGStringQueryEngine(CustomQueryEngine):
         nodes = self.retriever.retrieve(query_str)
         
         context_str = "\n\n".join([n.node.get_content() for n in nodes])
-        metadata = [x.metadata for x in nodes]
+        data = [x.metadata for x in nodes]
         
         # Extracting the pairs
-        title_url_pairs = set((item['file_name'], item['page_label']) for item in metadata)
+        title_url_pairs = set((item['file_name'], item['page_label']) for item in data)
 
         reference_str = "\n\nReference Documents:\n"
         for i, (title, page_label) in enumerate(title_url_pairs, 1):
