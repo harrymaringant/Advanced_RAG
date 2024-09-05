@@ -112,7 +112,7 @@ class RAGStringQueryEngine(CustomQueryEngine):
         nodes = self.retriever.retrieve(query_str)
         
         context_str = "\n\n".join([n.node.get_content() for n in nodes])
-        data = [x.metadata for x in nodes]
+        data = [x.metadata for x in nodes if len(x.get_content()) > 5]
         
         # Extracting the pairs
         title_url_pairs = set((item['title'], item['url']) for item in data)
