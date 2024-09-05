@@ -79,7 +79,7 @@ class QAChain:
 
         # Retrieve relevant docs to answer
         storage_context = StorageContext.from_defaults(
-            vector_store=f_store, persist_dir="./storage"
+            vector_store=f_store
         )
         index = load_index_from_storage(storage_context=storage_context)
 
