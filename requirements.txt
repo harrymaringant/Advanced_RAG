@@ -20,4 +20,4 @@ pypdf
 pypdfium2
 faiss-cpu
 llama-parse
-
+llama-index-vector-stores-faiss
