@@ -233,6 +233,9 @@ def main():
     st.set_page_config(layout="wide", page_title="Xaira Chatbot RAG🧕💬")
     st.title("Employee Policy Assistant Bank XYZ")
 
+    for key in st.session_state.keys():
+        del st.session_state[key]
+
     st.session_state["session_id"] = str(uuid.uuid4())
 
     # Clear chat everytime pages move
