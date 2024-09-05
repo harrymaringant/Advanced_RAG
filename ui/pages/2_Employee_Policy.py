@@ -109,7 +109,7 @@ class RAGStringQueryEngine(CustomQueryEngine):
     def custom_query(self, query_str: str):
         nodes = self.retriever.retrieve(query_str)
         
-        context_str = "\n\n".join([n.node.get_content() for n in nodes])
+        context_str = "\n\n".join([n.node.get_content() + "\nHalaman: " + n.node.metadata['page_label'] for n in nodes])
         data = [x.metadata for x in nodes]
         
         # Extracting the pairs
