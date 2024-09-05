@@ -79,6 +79,7 @@ class QAChain:
         # searchDocs = f_store.search(answer)
         answer_embedding = text_embedding_model.get_text_embedding(answer)
         searchDocs = f_store.query(query_embedding=answer_embedding, similarity_top_k=5)
+        st.write(searchDocs)
         metadata = [j.metadata for j in searchDocs][:3]    
         page_no = ",".join(set([i['page_no']for i in metadata]))
         answer_with_source =  f"""{answer}\n\n
