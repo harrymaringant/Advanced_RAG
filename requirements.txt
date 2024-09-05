@@ -20,5 +20,5 @@ pypdfium2==4.25.0
 scipy==1.12.0
 faiss-cpu
 llama-parse
-pydantic 
+pydantic==2.8
 
