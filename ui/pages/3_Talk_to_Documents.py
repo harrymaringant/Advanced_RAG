@@ -75,7 +75,7 @@ def handle_feedback(user_response, result):
     
 def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
-    st.title("AIDSU - Chat With Documents")
+    st.title("Chat With Documents")
 
     for key in st.session_state.keys():
         del st.session_state[key]
