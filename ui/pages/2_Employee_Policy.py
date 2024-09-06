@@ -281,9 +281,9 @@ def main():
     with st.sidebar:
         options = ["gemini-1.5-flash", "gemini-1.5-pro"]
         selected_option = st.selectbox("Select Gemini Model:", options, index= 0)
-        st.write("""Aisyah bisa bantu kamu mengetahui informasi promo dan layanan berikut:  
-            \n1. Info Cuti 
-            \n2. Info Tunjangan Hari Raya""")
+        # st.write("""Aisyah bisa bantu kamu mengetahui informasi promo dan layanan berikut:  
+        #     \n1. Info Cuti 
+        #     \n2. Info Tunjangan Hari Raya""")
         # Main content area for displaying chat messages
         st.button('Clear Chat History', on_click=clear_chat_history)
 

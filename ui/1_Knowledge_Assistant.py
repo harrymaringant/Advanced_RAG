@@ -283,14 +283,14 @@ def main():
     with st.sidebar:
         options = ["gemini-1.5-flash", "gemini-1.5-pro"]
         selected_option = st.selectbox("Select Gemini Model:", options, index= 0)
-        st.write("""Xaira bisa bantu kamu mengetahui informasi promo dan layanan berikut:  
-            \n1. Info Promosi  
-            \n2. Info Produk Save 
-            \n3. Info Produk Spend  
-            \n4. dll  
-            \n\nContoh pertanyaan:  
-            \n1. Promo apa saja yang tersedia?  
-            \n2. Cara buka tabungan?""")
+        # st.write("""Xaira bisa bantu kamu mengetahui informasi promo dan layanan berikut:  
+        #     \n1. Info Promosi  
+        #     \n2. Info Produk Save 
+        #     \n3. Info Produk Spend  
+        #     \n4. dll  
+        #     \n\nContoh pertanyaan:  
+        #     \n1. Promo apa saja yang tersedia?  
+        #     \n2. Cara buka tabungan?""")
         # Main content area for displaying chat messages
         st.button('Clear Chat History', on_click=clear_chat_history)
 
