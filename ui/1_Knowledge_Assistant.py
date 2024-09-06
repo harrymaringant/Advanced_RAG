@@ -234,8 +234,7 @@ def handle_feedback(user_response, result):
 
 def main():
     # App title
-    st.set_page_config(layout="wide", page_title="Xaira Chatbot RAG🧕💬")
-    st.title("Knowledge Assistant Bank XYZ")
+    st.set_page_config(page_title="Xaira Chatbot RAG🧕💬")
 
     image_file = "./assets/app_header.png"
     with open(image_file, "rb") as image:
@@ -270,6 +269,8 @@ def main():
 
 
     add_background("./assets/app_bg.png")
+
+    st.markdown("<h3 style='text-align: center; color: black;'>Knowledge Assistant</h3>", unsafe_allow_html=True)
 
     for key in st.session_state.keys():
         del st.session_state[key]
@@ -346,6 +347,7 @@ def main():
                 align="flex-end",
                 kwargs={"result": full_response},
                         )
+    footer()
 
 if __name__ == '__main__':
     main()

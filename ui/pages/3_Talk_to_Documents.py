@@ -77,8 +77,7 @@ def handle_feedback(user_response, result):
     
 def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
-    st.title("Chat With Documents")
-
+    
     image_file = "./assets/app_header.png"
     with open(image_file, "rb") as image:
         encoded_string = base64.b64encode(image.read())
@@ -112,6 +111,8 @@ def main():
 
 
     add_background("./assets/app_bg.png")
+
+    st.markdown("<h3 style='text-align: center; color: black;'>Chat With Documents</h3>", unsafe_allow_html=True)
 
     for key in st.session_state.keys():
         del st.session_state[key]
@@ -216,6 +217,8 @@ def main():
     #     if response is not None:
     #         message = {"role": "assistant", "content": full_response}
     #         st.session_state.messages.append(message)
+
+    footer()
 
 if __name__ == '__main__':
     main()
