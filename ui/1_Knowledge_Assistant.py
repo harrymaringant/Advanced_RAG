@@ -261,7 +261,7 @@ def main():
         }}
         
         section[data-testid="stSidebar"] {{
-            top: 16%; 
+            top: 20%; 
         }}
         </style>""",
         unsafe_allow_html=True,
