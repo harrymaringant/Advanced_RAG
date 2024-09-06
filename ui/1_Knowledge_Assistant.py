@@ -257,7 +257,7 @@ def main():
             background-image: url(data:image/jpeg;base64,{encoded_string.decode()});
             background-repeat: no-repeat;
             background-size: cover;
-            height: 12%;
+            height: 25%;
         }}
         
         section[data-testid="stSidebar"] {{
