@@ -1,7 +1,5 @@
 import streamlit as st
 import os
-from src.talk_to_doc_data_prep import Prep
-from src.qachain import QAChain
 from streamlit_feedback import streamlit_feedback
 import tempfile
 from pathlib import Path
@@ -10,6 +8,10 @@ import nest_asyncio
 from datetime import datetime
 import pytz
 import uuid
+import base64
+from src.talk_to_doc_data_prep import Prep
+from src.qachain import QAChain
+from src.layout import *
 
 
 nest_asyncio.apply()
@@ -76,6 +78,8 @@ def handle_feedback(user_response, result):
 def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
     st.title("Chat With Documents")
+
+    add_background("assets/nano_bg.png")
 
     for key in st.session_state.keys():
         del st.session_state[key]

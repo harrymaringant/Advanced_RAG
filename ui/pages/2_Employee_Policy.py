@@ -44,8 +44,10 @@ import re
 import pytz
 import uuid
 import yaml
+import base64
 from datetime import datetime
 from src.utils import preprocess_input
+from src.layout import *
 
 temperature = st.secrets['knowledge_assistant_tmp']
 generation_config = {"temperature": temperature}
@@ -232,6 +234,8 @@ def main():
     # App title
     st.set_page_config(layout="wide", page_title="Xaira Chatbot RAG🧕💬")
     st.title("Employee Policy Assistant Bank XYZ")
+
+    add_background("assets/nano_bg.png")
 
     for key in st.session_state.keys():
         del st.session_state[key]
