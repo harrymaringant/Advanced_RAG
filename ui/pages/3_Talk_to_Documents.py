@@ -77,7 +77,7 @@ def handle_feedback(user_response, result):
     
 def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
-    
+
     image_file = "./assets/app_header.png"
     with open(image_file, "rb") as image:
         encoded_string = base64.b64encode(image.read())
@@ -99,7 +99,7 @@ def main():
             background-image: url(data:image/jpeg;base64,{encoded_string.decode()});
             background-repeat: no-repeat;
             background-size: cover;
-            height: 16%;
+            height: 18%;
         }}
         
         section[data-testid="stSidebar"] {{
