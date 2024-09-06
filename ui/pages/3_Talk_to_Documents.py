@@ -79,7 +79,39 @@ def main():
     st.set_page_config(page_title="Chat with multiple DOCUMENTs",page_icon="🤖")
     st.title("Chat With Documents")
 
-    add_background("assets/nano_bg.png")
+    image_file = "./assets/app_header.png"
+    with open(image_file, "rb") as image:
+        encoded_string = base64.b64encode(image.read())
+    st.markdown(
+        f"""
+        <style>
+        [data-testid="stBottom"] > div{{
+            background-color: transparent;
+        }}
+        [data-testid="stChatMessage"]{{
+            background-color: transparent;
+    
+        }}
+        [data-testid=stSidebar] {{
+            background-color: transparent;
+
+        }}
+        header[data-testid="stHeader"]{{
+            background-image: url(data:image/jpeg;base64,{encoded_string.decode()});
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 16%;
+        }}
+        
+        section[data-testid="stSidebar"] {{
+            top: 16%; 
+        }}
+        </style>""",
+        unsafe_allow_html=True,
+    )
+
+
+    add_background("./assets/app_bg.png")
 
     for key in st.session_state.keys():
         del st.session_state[key]
