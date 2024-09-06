@@ -257,11 +257,11 @@ def main():
             background-image: url(data:image/jpeg;base64,{encoded_string.decode()});
             background-repeat: no-repeat;
             background-size: cover;
-            height: 16%;
+            height: 12%;
         }}
         
         section[data-testid="stSidebar"] {{
-            top: 25%; 
+            top: 16%; 
         }}
         </style>""",
         unsafe_allow_html=True,
