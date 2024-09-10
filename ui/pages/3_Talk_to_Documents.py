@@ -114,8 +114,8 @@ def main():
 
     st.markdown("<h3 style='text-align: center; color: black;'>Chat With Documents</h3>", unsafe_allow_html=True)
 
-    for key in st.session_state.keys():
-        del st.session_state[key]
+    # for key in st.session_state.keys():
+    #     del st.session_state[key]
 
     # st.session_state["session_id"] = str(uuid.uuid4())
 
