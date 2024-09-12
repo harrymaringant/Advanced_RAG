@@ -125,7 +125,8 @@ def main():
     # clear_chat_history()
     
     # Store LLM generated responses
-    del st.session_state["messages"]
+    if "messages" in st.session_state.keys():
+        del st.session_state["messages"]
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages = [{"role": "assistant", "content": f"{opening_content}"}]
