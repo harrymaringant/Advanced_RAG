@@ -54,7 +54,7 @@ def clear_vector_db():
 
 def clear_chat_history():
     st.session_state.messages = [
-        {"role": "assistant", "content": "upload some documents and ask me a question"}]
+        {"role": "assistant", "content": "upload some documents and talk with your docs"}]
 
 # Feedback mechanism using streamlit-feedback
 def handle_feedback(user_response, result):
@@ -75,6 +75,8 @@ def handle_feedback(user_response, result):
     # Reset session ID after feedback is submitted
     st.session_state["session_id"] = str(uuid.uuid4())
     
+opening_content = """Selamat pagi/siang/sore/malam! 👋  \nSilahkan upload dan berbincang dengan dokumen-dokumen anda."""
+
 def main():
     st.set_page_config(page_title="Xaira AI Personal Assistant🧕💬")
 
@@ -121,6 +123,12 @@ def main():
 
     # Clear chat everytime pages move
     # clear_chat_history()
+    
+    # Store LLM generated responses
+    del st.session_state["messages"]
+
+    if "messages" not in st.session_state.keys():
+        st.session_state.messages = [{"role": "assistant", "content": f"{opening_content}"}]
 
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
@@ -130,11 +138,6 @@ def main():
     
     if "f_store" not in st.session_state:
         st.session_state.f_store = None
-
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Hello! Upload your Documents files to start."}
-        ]
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
@@ -163,6 +166,7 @@ def main():
                     st.success("Done")
                 else:
                     st.warning("Please upload Documents first.")
+
         
     # Main content area for displaying chat messages
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
